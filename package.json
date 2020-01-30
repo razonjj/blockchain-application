@@ -1,0 +1,17 @@
+{
+  "name": "bloodbank-eth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "geth": "^0.4.0",
+    "lerna": "^3.20.2",
+    "mysql": "^2.18.1",
+    "web3": "^1.2.5"
+  }
+}

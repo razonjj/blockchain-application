@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Philippine Red Cross - Blood Bank</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="custom.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:500&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	</head>
+	<body>
+		<!--Navigation-->
+		<nav class="navbar navbar-light bg-light">
+		  <a class="navbar-brand" href="#">
+		    <img src="prc_logo.png" width="100" height="100" alt="">
+			<h1>Philippine Red Cross</h1>
+			</a>
+			<ul class="navbar-nav">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="login.html">Logout <span class="sr-only">(current)</span></a>
+		      </li>
+		    </ul>
+		</nav>
+		<div class="container">
+			<!-- Requests -->
+			<div class="modal" id="requests">
+			    <div class="modal-dialog">
+			      	<div class="modal-content">
+				        <!-- Modal Header -->
+				        <div class="modal-header">
+				          <h4 class="modal-title">View Request</h4>
+				        </div>
+				        <!-- Modal body -->
+				        <div class="modal-body">
+							<input class="form-control" type="text" placeholder="Search" aria-label="Search">
+				          <table class="table table-striped">
+						  <thead>
+							  <tr>
+								  <th scope="col">Request ID</th>
+								  <th scope="col">Blood Bank</th>
+								  <th scope="col">Description</th>
+								  <th scope="col"></th>
+								</tr>
+						  </thead>
+							<tr>
+								<td id="reqId"></td>
+								<td id="blood_bank"></td>
+								<td id="description"></td>
+								<td><button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal" data-target="#viewRequests" id="viewReq">View Request</button></td>
+							</tr>
+						  </table>
+				        </div>
+				        <!-- Modal footer -->
+				        <div class="modal-footer">
+						  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				        </div>
+			      	</div>
+			    </div>
+			</div>
+			<!-- Inventory -->
+			<div class="modal" id="inv">
+			    <div class="modal-dialog">
+			      	<div class="modal-content">
+			        	<!-- Modal Header -->
+			        	<div class="modal-header">
+			          <h4 class="modal-title">Inventory</h4>
+			        </div> 
+			        <!-- Modal body -->
+			        <div class="modal-body">
+			          <table class="table table-striped">
+					 <thead>
+						  <tr>
+							  <th scope="col">Blood Types</th>
+							  <th scope="col">Number of Bags Available</th>
+							  <th scope="col"></th>
+							  <th scope="col"></th>
+							</tr>
+					  </thead>
+						<tr>
+							<td>Type A</td>
+							<td id="num_Bags"></td>
+							<td><input class="form-control form-control-sm" type="number" min="1" placeholder="0" id="add_bag"></td>
+							<td><button type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i></button></td>
+						</tr>
+						<tr>
+							<td>Type AB</td>
+							<td id="num_Bags"></td>
+							<td><input class="form-control form-control-sm" type="number" min="1" placeholder="0" id="add_bag"></td>
+							<td><button type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i></button></td>
+						</tr>
+						<tr>
+							<td>Type B</td>
+							<td id="num_Bags"></td>
+							<td><input class="form-control form-control-sm" type="number" min="1" placeholder="0" id="add_bag"></td>
+							<td><button type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i></button></td>
+						</tr>
+						<tr>
+							<td>Type O</td>
+							<td id="num_Bags"></td>
+							<td><input class="form-control form-control-sm" type="number" min="1" placeholder="0" id="add_bag"></td>
+							<td><button type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i></button></td>
+						</tr>
+						<tr>
+							<td>Type A-</td>
+							<td id="num_Bags"></td>
+							<td><input class="form-control form-control-sm" type="number" min="1" placeholder="0" id="add_bag"></td>
+							<td><button type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i></button></td>
+						</tr>
+						<tr>
+							<td>Type AB-</td>
+							<td id="num_Bags"></td>
+							<td><input class="form-control form-control-sm" type="number" min="1" placeholder="0" id="add_bag"></td>
+							<td><button type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i></button></td>
+						</tr>
+						<tr>
+							<td>Type B-</td>
+							<td id="num_Bags"></td>
+							<td><input class="form-control form-control-sm" type="number" min="1" placeholder="0" id="add_bag"></td>
+							<td><button type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i></button></td>
+						</tr>
+						<tr>
+							<td>Type O-</td>
+							<td id="num_Bags"></td>
+							<td><input class="form-control form-control-sm" type="number" min="1" placeholder="0" id="add_bag"></td>
+							<td><button type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i></button></td>
+						</tr>
+					  </table>
+			        </div>
+			        <!-- Modal footer -->
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			  <!-- Transaction History -->
+			  <div class="modal" id="trans">
+			    <div class="modal-dialog">
+			      <div class="modal-content">
+				        <!-- Modal Header -->
+				        <div class="modal-header">
+				          <h4 class="modal-title">Transaction History</h4>
+				        </div>
+				        <!-- Modal body -->
+				        <div class="modal-body">
+				          <table class="table table-striped table-borderless">
+							  <thead>
+								<tr>
+								  <th scope="col">Request ID</th>
+								  <th scope="col">Blood Bank</th>
+								  <th scope="col">Date Requested</th>
+								  <th scope="col">Status</th>
+								  <th scope="col"></th>
+								</tr>
+							</thead>
+							  <tbody>
+								<tr>
+								  <td id="reqId"></td>
+								  <td id="blood_bank"></td>
+								  <td id="date_req"></td>
+								  <td id="req_status"></td>
+								  <td><button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal" data-target="#viewDetails" id="details">View Details</button></td>
+								</tr>
+							  </tbody>
+							</table>
+				        </div>
+				        <!-- Modal footer -->
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				        </div>
+			      	</div>
+			    </div>
+			  </div>
+				<!--View Request-->
+					<div class="modal" id="viewRequests">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+						  <h4 class="modal-title">View Requests</h4> 
+						</div>
+						<!-- Modal body -->
+						<div class="modal-body">
+							<form>
+							  <div class="form-group row">
+								<label for="reqId" class="col-sm-5 col-form-label mr-2">Request ID#:</label>
+								<div class="col-sm-5 mb-3">
+								  <input type="text" readonly class="form-control-plaintext" id="reqId" value="">
+								</div>
+							  </div>
+							  <div class="form-group row">
+								<label for="userReq" class="col-sm-5 col-form-label mr-2">Requested by:</label>
+								<div class="col-sm-5 mb-3">
+								  <input type="text" readonly class="form-control-plaintext" id="userReq">
+								</div>
+							  </div>
+							  <div class="form-group row">
+								<label for="bloodBank" class="col-sm-5 col-form-label mr-2">Blood Bank:</label>
+								<div class="col-sm-5 mb-3">
+								  <input type="text" readonly class="form-control-plaintext" id="bloodBank">
+								</div>
+							  </div>
+							</form>
+							<br>
+							<table>
+								<th>Requested Blood Types</th>
+								<th>Requested Number of Bags</th>
+								<th>Quantity</th>
+								<tr>
+									<td id="reqBloodType"></td>
+									<td id="reqNumBags"></td>
+									<td id="quantity"></td>
+								</tr>
+							</table>
+						</div>
+						<!-- Modal footer -->
+						<div class="modal-footer">
+						  <button type="submit" class="btn btn-success" data-dismiss="modal"  onclick="myFunction()">Approve</button>
+						  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--View Details-->
+					<div class="modal" id="viewDetails">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<!-- Modal Header -->
+						<div class="modal-header">
+						  <h4 class="modal-title">View Details</h4> 
+						</div>
+						<!-- Modal body -->
+						<div class="modal-body">
+							<form>
+							  <div class="form-group row">
+								<label for="reqId" class="col-sm-5 col-form-label mr-2">Request ID#:</label>
+								<div class="col-sm-5 mb-3">
+								  <input type="text" readonly class="form-control-plaintext" id="reqId" value="">
+								</div>
+							  </div>
+							  <div class="form-group row">
+								<label for="userReq" class="col-sm-5 col-form-label mr-2">Requested by:</label>
+								<div class="col-sm-5 mb-3">
+								  <input type="text" readonly class="form-control-plaintext" id="userReq">
+								</div>
+							  </div>
+							  <div class="form-group row">
+								<label for="bloodBank" class="col-sm-5 col-form-label mr-2">Blood Bank:</label>
+								<div class="col-sm-5 mb-3">
+								  <input type="text" readonly class="form-control-plaintext" id="bloodBank">
+								</div>
+							  </div>
+							</form>
+							<br>
+							<table>
+								<th>Requested Blood Types</th>
+								<th>Requested Number of Bags</th>
+								<th>Quantity</th>
+								<tr>
+									<td id="reqBloodType"></td>
+									<td id="reqNumBags"></td>
+									<td id="quantity"></td>
+								</tr>
+							</table>
+						</div>
+						<!-- Modal footer -->
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!---->
+			<br>
+			<div class="page2">
+				<div class="row">
+					<div class="col">
+					 	<button type="button" class="btn btn-lg btn_size" data-toggle="modal" data-target="#requests" id="req"><img src="req.png" id="reqLogo" ><br>View Request</button>
+					</div>
+					<div class="col">
+					  	<button type="button" class="btn btn-lg btn_size" data-toggle="modal" data-target="#inv" id="inv"><img src="inventory.png" id="invLogo" ><br>Inventory</button>
+					</div>
+					<div class="col">
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col">
+					 	<button class="btn btn-lg btn-link btn_size" onclick="window.location.href='blood_banks.html';"><img src="bb.png" id="bbLogo" ><br>Blood Banks</button>
+					</div>
+					<div class="col">
+					  	<button type="button" class="btn btn-lg btn_size" data-toggle="modal" data-target="#trans" id="trans"><img src="his.png" id="hisLogo" ><br>Transaction History</button>
+					</div>
+					<div class="col">
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			function myFunction() {
+			  alert("The request was approved successfully!");
+			}
+		</script>
+	</body>
+</html>
